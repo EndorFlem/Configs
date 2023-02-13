@@ -1,0 +1,81 @@
+:set number
+:set relativenumber 
+:set autoindent
+:set tabstop=2
+:set shiftwidth=2
+:set smarttab
+:set softtabstop=2
+:set mouse=a
+:set completeopt-=preview
+:set splitbelow
+:set hlsearch
+:set incsearch
+set background=dark
+:set syntax=on
+
+call plug#begin()
+Plug 'preservim/nerdtree'
+Plug 'https://github.com/tpope/vim-commentary' "?????
+Plug 'https://github.com/ap/vim-css-color'
+Plug 'mattn/emmet-vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'windwp/nvim-autopairs' "???????????????
+Plug 'posva/vim-vue' "?????????????????
+Plug 'evanleck/vim-svelte', {'branch': 'main'} "??????????????
+Plug 'romgrk/barbar.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } "?????
+Plug 'nvim-lualine/lualine.nvim'
+" colorthemes
+Plug 'fcpg/vim-fahrenheit'
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+Plug 'https://github.com/rafi/awesome-vim-colorschemes'
+Plug 'https://github.com/rose-pine/neovim', {'as': 'rose-pine'}
+Plug 'https://github.com/EdenEast/nightfox.nvim'
+Plug 'https://github.com/folke/tokyonight.nvim'
+call plug#end()
+
+set termguicolors
+colorscheme rose-pine
+
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <S-n> :NERDTreeToggle<CR>
+
+" Move to previous/next
+nnoremap <silent>    <A-,> <Cmd>BufferPrevious<CR>
+nnoremap <silent>    <A-.> <Cmd>BufferNext<CR>
+" Re-order to previous/next
+nnoremap <silent>    <A-<> <Cmd>BufferMovePrevious<CR>
+nnoremap <silent>    <A->> <Cmd>BufferMoveNext<CR>
+" Goto buffer in position...
+nnoremap <silent>    <A-1> <Cmd>BufferGoto 1<CR>
+nnoremap <silent>    <A-2> <Cmd>BufferGoto 2<CR>
+nnoremap <silent>    <A-3> <Cmd>BufferGoto 3<CR>
+nnoremap <silent>    <A-4> <Cmd>BufferGoto 4<CR>
+nnoremap <silent>    <A-5> <Cmd>BufferGoto 5<CR>
+nnoremap <silent>    <A-6> <Cmd>BufferGoto 6<CR>
+nnoremap <silent>    <A-7> <Cmd>BufferGoto 7<CR>
+nnoremap <silent>    <A-8> <Cmd>BufferGoto 8<CR>
+nnoremap <silent>    <A-9> <Cmd>BufferGoto 9<CR>
+nnoremap <silent>    <A-0> <Cmd>BufferLast<CR>
+
+map('n', '<A-p>', '<Cmd>BufferPin<CR>', opts)
+map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
+map('n', '<C-p>', '<Cmd>BufferPick<CR>', opts)
+map('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts)
+map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', opts)
+map('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', opts)
+map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
+
+
+let g:user_emmet_leader_key=','
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+
+"lua stuff
+lua << END
+require('lualine').setup()
+require("nvim-autopairs").setup()
+END
+
+

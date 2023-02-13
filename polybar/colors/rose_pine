@@ -1,0 +1,11 @@
+background = #191724
+background-alt = #908caa
+foreground = #e0def4
+primary = #ebbcba
+secondary = #9ccfd8
+alert = #eb6f92
+disabled = #908caa
+focused = #26233a
+pine = #31748f
+gold = #f6c177
+iris = #c4a7e7
